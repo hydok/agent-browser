@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'">
+  <title>AgentBrowser</title>
+  <style>
+    :root {
+      --bg: #f3f3f1; --panel: #ffffff; --line: #d9d9d4; --ink: #1d1d1b; --quiet: #6b6b66;
+      --agent: #2f6fdb; --agent-tint: #e5eefc; --user: #b26a00; --user-tint: #fbefdc;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root { --bg: #232322; --panel: #2d2d2b; --line: #45453f; --ink: #ececea; --quiet: #a3a39c;
+        --agent-tint: #23324d; --user-tint: #4a3612; }
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; height: 84px; overflow: hidden; background: var(--bg); color: var(--ink);
+      font: 13px -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", sans-serif; user-select: none; }
+    .row { display: flex; align-items: center; gap: 6px; height: 40px; padding: 0 8px; }
+    .row.top { padding-left: 80px; -webkit-app-region: drag; border-bottom: 1px solid var(--line); }
+    /* Only clickable parts opt out, so empty space in the bar (incl. beside the tabs) drags the window. */
+    .row.top button, .row.top .space, .row.top .tab { -webkit-app-region: no-drag; }
+    .row.nav { height: 44px; }
+    button { font: inherit; color: var(--ink); background: transparent; border: 1px solid transparent;
+      border-radius: 6px; padding: 4px 8px; cursor: pointer; }
+    button:hover:not(:disabled) { background: var(--panel); border-color: var(--line); }
+    button:disabled { color: var(--quiet); cursor: default; }
+    .space { border: 1px solid var(--line); border-radius: 14px; padding: 3px 10px; display: flex; gap: 6px; align-items: center; }
+    .space.current { background: var(--panel); font-weight: 600; }
+    .space.agent .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--agent); }
+    .space.agent.paused .dot { background: var(--user); }
+    .space .x { padding: 0 2px; color: var(--quiet); }
+    .sep { width: 1px; height: 20px; background: var(--line); margin: 0 4px; }
+    #tabs { display: flex; gap: 4px; overflow: hidden; flex: 1; min-width: 0; }
+    .tab { display: flex; align-items: center; gap: 4px; max-width: 200px; min-width: 60px; padding: 4px 6px 4px 10px;
+      border-radius: 6px; border: 1px solid transparent; cursor: pointer; }
+    .tab.active { background: var(--panel); border-color: var(--line); }
+    .tab .t { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; flex: 1; }
+    .tab .lbl { color: var(--quiet); font-size: 11px; }
+    #url { flex: 1; height: 30px; border-radius: 15px; border: 1px solid var(--line); background: var(--panel);
+      color: var(--ink); padding: 0 14px; font: inherit; }
+    #url:disabled { color: var(--quiet); }
+    #control { display: none; align-items: center; gap: 8px; padding: 4px 6px 4px 12px; border-radius: 16px; white-space: nowrap; max-width: 420px; }
+    #controlText { overflow: hidden; text-overflow: ellipsis; }
+    #control.agent { display: flex; background: var(--agent-tint); }
+    #control.user { display: flex; background: var(--user-tint); }
+    #control button { border-color: var(--line); background: var(--panel); }
+  </style>
+</head>
+<body>
+  <div class="row top">
+    <div id="spaces" style="display:flex;gap:6px"></div>
+    <div class="sep"></div>
+    <div id="tabs"></div>
+    <button id="newTab" title="새 탭">＋</button>
+  </div>
+  <div class="row nav">
+    <button id="back" title="뒤로">←</button>
+    <button id="forward" title="앞으로">→</button>
+    <button id="reload" title="새로고침">↻</button>
+    <input id="url" spellcheck="false" placeholder="주소 입력 또는 검색">
+    <button id="star" title="북마크 추가/삭제">☆</button>
+    <button id="bookmarks" title="북마크">북마크 ▾</button>
+    <button id="history" title="방문 기록">기록 ▾</button>
+    <div id="control"><span id="controlText"></span><button id="controlBtn"></button></div>
+  </div>
+  <script src="ui.js"></script>
+</body>
+</html>
