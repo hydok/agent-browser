@@ -1,0 +1,29 @@
+{
+  "name": "agent-browser",
+  "version": "1.0.0",
+  "description": "AI agent browser with MCP server",
+  "main": "dist/main/main.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "build": "tsc",
+    "start": "tsc && env -u ELECTRON_RUN_AS_NODE electron .",
+    "mcp": "node dist/mcp/server.js",
+    "test": "node --test test/library.test.mjs && node test/e2e.mjs",
+    "start:test": "tsc && env -u ELECTRON_RUN_AS_NODE AGENT_BROWSER_AUTO_DENY=1 AGENT_BROWSER_FILES_DIR=\"${TMPDIR:-/tmp}/agent-browser-test\" electron ."
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.32.2",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.6",
+    "electron": "^45.2.1",
+    "typescript": "^7.0.2"
+  }
+}
