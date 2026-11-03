@@ -14,8 +14,8 @@
     "start:test": "tsc && env -u ELECTRON_RUN_AS_NODE AGENT_BROWSER_AUTO_DENY=1 AGENT_BROWSER_FILES_DIR=\"${TMPDIR:-/tmp}/agent-browser-test\" electron ."
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "hydok",
+  "license": "MIT",
   "type": "commonjs",
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.32.2",
