@@ -1,0 +1,16 @@
+<!doctype html>
+<html lang="ko">
+<head><meta charset="utf-8"><title>테스트 폼</title></head>
+<body>
+  <h1>테스트 폼</h1>
+  <label>이름 <input id="name" name="name"></label>
+  <label>도시
+    <select id="city"><option value="">선택</option><option value="seoul">서울</option><option value="busan">부산</option></select>
+  </label>
+  <button id="save" onclick="document.getElementById('out').textContent = '저장됨: ' + document.getElementById('name').value + ' / ' + document.getElementById('city').value">저장</button>
+  <button id="ask" onclick="document.getElementById('out').textContent = confirm('진행할까요?') ? '확인 누름' : '취소 누름'">확인 창 띄우기</button>
+  <button id="del" onclick="document.getElementById('out').textContent = '삭제 실행됨'">삭제</button>
+  <a href="about:blank" target="_blank">새 창 링크</a>
+  <p id="out">결과 없음</p>
+</body>
+</html>

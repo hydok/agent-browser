@@ -1,0 +1,14 @@
+<!doctype html>
+<html lang="ko">
+<head><meta charset="utf-8"><title>파일 테스트</title></head>
+<body>
+  <a id="dl" href="/pages/report.txt?download">보고서 받기</a>
+  <label>첨부 <input type="file" id="direct" multiple
+    onchange="document.getElementById('out1').textContent = [...this.files].map((f) => f.name + ':' + f.size).join(',')"></label>
+  <button id="pick" onclick="document.getElementById('hidden').click()">파일 고르기</button>
+  <input type="file" id="hidden" style="display:none"
+    onchange="document.getElementById('out2').textContent = [...this.files].map((f) => f.name).join(',')">
+  <p id="out1">없음</p>
+  <p id="out2">없음</p>
+</body>
+</html>

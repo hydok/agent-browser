@@ -1,0 +1,11 @@
+<!doctype html>
+<html lang="ko">
+<head><meta charset="utf-8"><title>프레임 테스트</title>
+<style>body { margin: 0; padding: 120px 0 0 90px; } iframe { width: 420px; height: 140px; margin: 30px 0 0 40px; }</style></head>
+<body>
+  <h1>프레임 테스트</h1>
+  <p id="out">결과 없음</p>
+  <iframe title="같은 출처" srcdoc="<button onclick=&quot;parent.document.getElementById('out').textContent='같은 출처 클릭됨'&quot;>안쪽 버튼</button>"></iframe>
+  <iframe title="교차 출처" src="{{OTHER}}/pages/inner.html"></iframe>
+</body>
+</html>

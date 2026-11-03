@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="ko">
+<head><meta charset="utf-8"><title>포털</title></head>
+<body>
+  <header><nav><a href="#">메일</a> <a href="#">카페</a> <a href="#">블로그</a> <a href="#">쇼핑</a></nav></header>
+  <main>
+    <section>
+      <h2>오늘의 날씨</h2>
+      <div><span>서울</span> <span>맑음</span> <span>18°C</span> <span>미세먼지 좋음</span></div>
+    </section>
+    <section>
+      <h2>뉴스</h2>
+      <ul id="news"></ul>
+    </section>
+    <article>
+      <h1>기사 제목</h1>
+      <p>첫 문단입니다. 에이전트 브라우저는 사람과 AI가 같은 브라우저를 함께 쓰도록 만든 프로젝트입니다. 본문 추출 기능은 이 문단을 가져와야 합니다.</p>
+      <p>두 번째 문단입니다. 메뉴, 광고, 푸터는 본문 추출 결과에 들어가지 않아야 합니다. 이 문장은 길이를 채우기 위해 조금 더 길게 씁니다.</p>
+      <p>세 번째 문단입니다. 실제 기사는 보통 이보다 훨씬 길기 때문에, 짧은 글보다 긴 글에서 본문 영역을 더 정확히 찾습니다. 그래서 테스트 문서도 문단을 세 개 둡니다.</p>
+    </article>
+  </main>
+  <aside aria-label="광고"><a href="#">쇼핑 할인 광고</a></aside>
+  <footer>회사소개 · 이용약관 · 개인정보처리방침</footer>
+  <script>
+    const ul = document.getElementById('news');
+    for (let i = 1; i <= 40; i++) ul.insertAdjacentHTML('beforeend', `<li><a href="#">경제 뉴스 ${i}번 헤드라인</a></li>`);
+  </script>
+</body>
+</html>
